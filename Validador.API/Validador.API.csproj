@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Validador\Validador.Application.csproj" />
+    <ProjectReference Include="..\Validador.Application\Validador.Application.csproj" />
   </ItemGroup>
 
 </Project>

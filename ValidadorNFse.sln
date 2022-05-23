@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validador.API", "Validador.API\Validador.API.csproj", "{EA7BF73A-A1A1-4D09-A9F1-5922388CE8F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validador.Application", "Validador\Validador.Application.csproj", "{08724684-4D77-4FE6-A15A-D2E0A267E19A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validador.Application", "Validador.Application\Validador.Application.csproj", "{08724684-4D77-4FE6-A15A-D2E0A267E19A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
