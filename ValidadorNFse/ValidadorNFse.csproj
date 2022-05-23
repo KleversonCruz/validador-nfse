@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Validator\Schemas\Abrasf\nfse_v2-03 2016.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Abrasf\xmldsig-core-schema20020212.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Betha\nfse_v01.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Betha\xmldsig-core-schema.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Betha\xmldsig-core-schema_v01.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\cabecalho_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_cancelar_nfse_envio_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_cancelar_nfse_resposta_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_lote_rps_envio_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_lote_rps_resposta_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_nfse_envio_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_nfse_resposta_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_nfse_rps_envio_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_nfse_rps_resposta_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_situacao_lote_rps_envio_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_consultar_situacao_lote_rps_resposta_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_enviar_lote_rps_envio_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\servico_enviar_lote_rps_resposta_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\tipos_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validator\Schemas\Ginfes\xmldsig-core-schema20020212_v03.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
