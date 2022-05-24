@@ -7,5 +7,6 @@ namespace Validador.Application
         Ginfes,
         Betha,
         Betha20,
+        Natal
     }
 }

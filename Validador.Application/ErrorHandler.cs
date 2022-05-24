@@ -31,8 +31,8 @@ namespace Validador.Application
 
     public class ValidationErrors
     {
-        public readonly static string InvalidChildElement = @".*The element '(\w+)'.*has invalid child element '(\w+)'.*List of possible elements expected: '(\w+)'.*";
-        public readonly static string InvalidElementPattern = @".*The '.*:(\w+)'.*element is invalid.*The value '(\w+)'.*to its datatype '.*:(\w+)'.*";
-        public readonly static string AttributeMissing = @".*The required attribute '(\w+)' is missing.*";
+        public const string InvalidChildElement = @".*The element '(\w+)'.*has invalid child element '(\w+)'.*List of possible elements expected: '(\w+)'.*";
+        public const string InvalidElementPattern = @".*The '.*:(\w+)'.*element is invalid.*The value '(\w+\W)'.*to its datatype '.*:(\w+)'.*";
+        public const string AttributeMissing = @".*The required attribute '(\w+)' is missing.*";
     }
 }

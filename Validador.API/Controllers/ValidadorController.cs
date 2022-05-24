@@ -10,7 +10,7 @@ namespace Validador.API.Controllers
         [HttpPost]
         public IActionResult Validate([FromForm] ValidadorModel model)
         {
-            var validador = Application.Factory.Create(model.CollectionName);
+            var validador = Application.CollectionFactory.Create(model.CollectionName);
             var errorList =validador.ValidateSchema(model.XmlText);
             if (errorList.Count > 0)
             {

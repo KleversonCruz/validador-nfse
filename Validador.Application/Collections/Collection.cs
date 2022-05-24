@@ -7,10 +7,14 @@ namespace Validador.Application
 {
     public abstract class Collection
     {
-        private static readonly string DirectoryPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-        public string CollectionName { get; set; }
-        public XmlSchemaSet Schema { get; set; }
-        public string SchemaDirectoryPath
+        protected static readonly string DirectoryPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+        private string collectionName;
+
+        private readonly List<string> ValidationErrors = new();
+        public string CollectionName { get => collectionName; }
+        protected XmlSchemaSet Schema { get; set; }
+        protected string SchemaDirectoryPath
         {
             get
             {
@@ -18,13 +22,11 @@ namespace Validador.Application
             }
         }
 
-        public Collection()
+        public Collection(string name)
         {
             Schema = new XmlSchemaSet();
-            CollectionName = "Abrasf";
+            collectionName = name;
         }
-
-        private readonly List<string> ValidationErrors = new();
 
         public List<string> ValidateSchema(string xmlString)
         {
@@ -40,6 +42,6 @@ namespace Validador.Application
             ValidationErrors.Add(ErrorHandler.GetMessage(e.Message));
         }
 
-        public abstract void SetSchemas();
+        protected abstract void SetSchemas();
     }
 }

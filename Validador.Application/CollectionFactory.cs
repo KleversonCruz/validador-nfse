@@ -1,6 +1,6 @@
 ﻿namespace Validador.Application
 {
-    public static class Factory
+    public static class CollectionFactory
     {
         public static Collection Create(ECollections collection)
         {
@@ -19,6 +19,8 @@
                     return new Betha();
                 case "Betha20":
                     return new Betha20();
+                case "Natal":
+                    return new Natal();
             }
         }
     }

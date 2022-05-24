@@ -2,12 +2,9 @@
 {
     public class Ginfes : Collection
     {
-        public Ginfes()
-        {
-            CollectionName = "Ginfes";
-        }
+        public Ginfes() : base("Ginfes") { }
 
-        public override void SetSchemas()
+        protected override void SetSchemas()
         {
             Schema.Add(null, Path.Combine(SchemaDirectoryPath, "tipos_v03.xsd"));
             Schema.Add(null, Path.Combine(SchemaDirectoryPath, "cabecalho_v03.xsd"));
