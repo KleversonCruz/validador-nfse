@@ -37,7 +37,7 @@ namespace Validador.Application
 
         private void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            ValidationErrors.Add(e.Message);
+            ValidationErrors.Add(ErrorHandler.GetMessage(e.Message));
         }
 
         public abstract void SetSchemas();

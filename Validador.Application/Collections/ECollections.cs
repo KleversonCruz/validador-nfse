@@ -5,6 +5,7 @@ namespace Validador.Application
     {
         Abrasf,
         Ginfes,
-        Betha
+        Betha,
+        Betha20,
     }
 }

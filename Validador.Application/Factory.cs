@@ -17,6 +17,8 @@
                     return new Ginfes();
                 case "Betha":
                     return new Betha();
+                case "Betha20":
+                    return new Betha20();
             }
         }
     }
