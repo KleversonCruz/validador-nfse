@@ -1,22 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Validador.API.Models;
 
 namespace Validador.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ValidadorController : ControllerBase
+    public class ValidadorController : Controller
     {
-        [HttpPost]
-        public IActionResult Validate([FromForm] ValidadorModel model)
+
+        public IActionResult Index()
         {
-            var validador = Application.CollectionFactory.Create(model.CollectionName);
-            var errorList =validador.ValidateSchema(model.XmlText);
-            if (errorList.Count > 0)
+            ValidadorModel model = new ValidadorModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Index(ValidadorModel model)
+        {
+            try
             {
-                return BadRequest(errorList);
+                var validador = Application.CollectionFactory.Create(model.SelectedCollection);
+                model.MessageList = validador.ValidateSchema(model.XmlText);
+                model.IsValid = false;
+
+                if (model.MessageList.Count == 0)
+                {
+                    model.MessageList.Add("Validado com sucesso");
+                    model.IsValid = true;
+                }
+                return View(model);
             }
-            return Ok();
+            catch (Exception ex)
+            {
+                model.MessageList = new List<string>() { ex.Message };
+                model.IsValid = false;
+                return View(model);
+            }
+            
         }
     }
 }
