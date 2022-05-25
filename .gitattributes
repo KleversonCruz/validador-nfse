@@ -3,6 +3,8 @@
 ###############################################################################
 * text=auto
 *.css linguist-detectable=false
+input/*.css linguist-detectable=false
+output/*.css linguist-detectable=false
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
