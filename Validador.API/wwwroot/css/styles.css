@@ -673,6 +673,12 @@ textarea {
     border-color: #b3e6d2;
 }
 
+.alert-danger {
+    color: #8b0d00;
+    background-color: #fad0cc;
+    border-color: #f8b9b3;
+}
+
 .nav-fixed .topnav {
     position: fixed;
     top: 0;
@@ -781,6 +787,16 @@ textarea {
 .text-green {
     --bs-text-opacity: 1;
     color: rgba(34, 197, 94, var(--bs-text-opacity)) !important;
+}
+
+.text-yellow {
+    --bs-text-opacity: 1;
+    color: rgba(244, 161, 0, var(--bs-text-opacity)) !important;
+}
+
+.text-red {
+    --bs-text-opacity: 1;
+    color: rgba(232, 21, 0, var(--bs-text-opacity)) !important;
 }
 
 .text-muted {

@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using Validador.Application.Schemas;
 
 namespace Validador.Application
 {
@@ -11,9 +12,9 @@ namespace Validador.Application
 
         private string collectionName;
 
-        private readonly List<string> ValidationErrors = new();
+        private readonly List<ValidationError> ValidationErrors = new();
         public string CollectionName { get => collectionName; }
-        protected XmlSchemaSet Schema { get; set; }
+        protected XmlSchemaSet Schemas { get; set; }
         protected string SchemaDirectoryPath
         {
             get
@@ -24,22 +25,33 @@ namespace Validador.Application
 
         public Collection(string name)
         {
-            Schema = new XmlSchemaSet();
+            Schemas = new XmlSchemaSet();
             collectionName = name;
         }
 
-        public List<string> ValidateSchema(string xmlString)
+        public List<ValidationError> ValidateSchema(string xmlString)
         {
             SetSchemas();
-            XmlReader reader = XmlReader.Create(new StringReader(xmlString));
-            XDocument document = XDocument.Load(reader);
-            document.Validate(Schema, ValidationEventHandler);
+
+            XmlReaderSettings settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.Schema,
+                ValidationFlags = XmlSchemaValidationFlags.ProcessInlineSchema | XmlSchemaValidationFlags.ReportValidationWarnings,
+                Schemas = Schemas
+            };
+            settings.ValidationEventHandler += new ValidationEventHandler(ValidationEventHandler);
+
+            XmlReader reader = XmlReader.Create(new StringReader(xmlString), settings);
+            while (reader.Read());
             return ValidationErrors;
         }
 
-        private void ValidationEventHandler(object sender, ValidationEventArgs e)
+        private void ValidationEventHandler(object sender, ValidationEventArgs args)
         {
-            ValidationErrors.Add(ErrorHandler.GetMessage(e.Message));
+            if (args.Severity == XmlSeverityType.Warning)
+                ValidationErrors.Add(new ValidationError(args.Message, ValidationError.Severity.Warning));
+            else
+                ValidationErrors.Add(new ValidationError(args.Message, ValidationError.Severity.Error));
         }
 
         protected abstract void SetSchemas();

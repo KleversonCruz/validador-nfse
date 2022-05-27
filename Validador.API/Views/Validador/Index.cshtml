@@ -8,13 +8,13 @@
                     <div class="text-center">
                         <h5>Validar documentos NFS-e</h5>
                         <p class="mb-4">
-                            Cole seu XML e selecione o modelo/padrão para validar.
+                            Cole seu XML e selecione o modelo/cidade para validar.
                         </p>
                     </div>
                 </div>
                 <form class="form mb-4" enctype="multipart/form-data" asp-action="Index" method="post">
                     <div class="mb-3">
-                        <label>Modelo/padrão NFS-e</label>
+                        <label>Modelo/cidade NFS-e</label>
                         <select class="form-control" asp-items="Model.CollectionList" asp-for="SelectedCollection"></select>
                     </div>
 
@@ -32,34 +32,71 @@
             </div>
         </div>
 
-        @if (Model.MessageList.Count > 0)
+        @if (Model.ValidationErrorList.Count > 0 | Model.IsValid | Model.ExceptionMessage != string.Empty)
         {
             <div class="card mb-4 border-0">
                 <div class="card-body">
                     <div class="justify-content-center mb-4">
                         <div class="text-center">
                             <h5 class="mb-3">Resultado da validação</h5>
-                            <div class="mb-3">
-                                @{
-                                    var alertCss = "alert ";
-                                    if (Model.IsValid)
-                                    {
-                                        alertCss += "alert-success";
-                                    }
-                                    else
-                                    {
-                                        alertCss += "alert-warning";
-                                    }
-                                }
-                                <div class="@alertCss" role="alert">
-                                    @foreach (var message in Model.MessageList)
-                                    {
-                                        <div>@Html.DisplayFor(modelItem => message)</div>
-                                    }
+
+                            @if (Model.ExceptionMessage != string.Empty)
+                            {
+                                <div>
+                                    <div class="alert alert-danger" role="alert">
+                                        @Html.DisplayFor(modelItem => Model.ExceptionMessage)
+                                    </div>
                                 </div>
-                            </div>
+
+                            }
+                            @if (Model.IsValid)
+                            {
+                                <div>
+                                    <div class="alert alert-success" role="alert">
+                                        Validado com sucesso
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
+
+                    @if (Model.ValidationErrorList.Count > 0)
+                    {
+                        <div class='table-responsive'>
+                            <table class='table table-borderless'>
+                                <thead>
+                                    <tr class='small text-uppercase'>
+                                        <th scope='col'></th>
+                                        <th scope='col'></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var validationError in Model.ValidationErrorList)
+                                    {
+                                        var iconCss = "";
+                                        if (validationError.SeverityType.ToString() == "Warning")
+                                        {
+                                            iconCss = "fa-solid fa-triangle-exclamation text-yellow";
+                                        }
+                                        else
+                                        {
+                                            iconCss = "fa-solid fa-circle-exclamation text-red";
+                                        }
+                                        <tr class='border-bottom'>
+                                            <td class='fw-bold text-center align-middle'>
+                                                <i class="@iconCss"></i>
+                                            </td>
+                                            <td>
+                                                <div class='small text-muted'>
+                                                    @Html.DisplayFor(modelItem => validationError.Message)
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
                 </div>
             </div>
         }

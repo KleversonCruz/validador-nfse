@@ -19,20 +19,12 @@ namespace Validador.API.Controllers
             try
             {
                 var validador = Application.CollectionFactory.Create(model.SelectedCollection);
-                model.MessageList = validador.ValidateSchema(model.XmlText);
-                model.IsValid = false;
-
-                if (model.MessageList.Count == 0)
-                {
-                    model.MessageList.Add("Validado com sucesso");
-                    model.IsValid = true;
-                }
+                model.ValidationErrorList = validador.ValidateSchema(model.XmlText);
                 return View(model);
             }
             catch (Exception ex)
             {
-                model.MessageList = new List<string>() { ex.Message };
-                model.IsValid = false;
+                model.ExceptionMessage = ex.Message;
                 return View(model);
             }
             

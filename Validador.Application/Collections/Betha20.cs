@@ -8,8 +8,8 @@ namespace Validador.Application
 
         protected override void SetSchemas()
         {
-            Schema.Add(null, Path.Combine(SchemaDirectoryPath, "nfse_v202.xsd"));
-            Schema.Add(null, Path.Combine(SchemaDirectoryPath, "xmldsig-core-schema20020212.xsd"));
+            Schemas.Add(null, Path.Combine(SchemaDirectoryPath, "nfse_v202.xsd"));
+            Schemas.Add(null, Path.Combine(SchemaDirectoryPath, "xmldsig-core-schema20020212.xsd"));
         }
     }
 }

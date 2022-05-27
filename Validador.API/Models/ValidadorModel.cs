@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Validador.Application.Schemas;
 
 namespace Validador.API.Models
 {
@@ -9,6 +10,7 @@ namespace Validador.API.Models
             CollectionList = new SelectList(GetCollectionSelect(), "Value", "Text");
             XmlText = string.Empty;
             SelectedCollection = string.Empty;
+            ExceptionMessage = string.Empty;
         }
 
         public List<SelectListItem> GetCollectionSelect()
@@ -26,7 +28,8 @@ namespace Validador.API.Models
         public string SelectedCollection { get; set; }
         public SelectList CollectionList { get; set; }
 
-        public List<string> MessageList = new();
-        public bool IsValid { get; set; }
+        public List<ValidationError> ValidationErrorList = new();
+        public bool IsValid { get { return ValidationErrorList.Count == 0 & XmlText != string.Empty & ExceptionMessage == string.Empty; } }
+        public string ExceptionMessage { get; set; }
     }
 }
