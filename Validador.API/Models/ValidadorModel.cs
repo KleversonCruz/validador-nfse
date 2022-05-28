@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Validador.Application.Schemas;
+using Validador.Application.Errors;
 
 namespace Validador.API.Models
 {

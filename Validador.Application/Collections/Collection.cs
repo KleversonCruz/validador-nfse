@@ -1,8 +1,7 @@
 ﻿using System.Reflection;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Schema;
-using Validador.Application.Schemas;
+using Validador.Application.Errors;
 
 namespace Validador.Application
 {
@@ -42,16 +41,14 @@ namespace Validador.Application
             settings.ValidationEventHandler += new ValidationEventHandler(ValidationEventHandler);
 
             XmlReader reader = XmlReader.Create(new StringReader(xmlString), settings);
-            while (reader.Read());
+            while (reader.Read()) ;
             return ValidationErrors;
         }
 
         private void ValidationEventHandler(object sender, ValidationEventArgs args)
         {
-            if (args.Severity == XmlSeverityType.Warning)
-                ValidationErrors.Add(new ValidationError(args.Message, ValidationError.Severity.Warning));
-            else
-                ValidationErrors.Add(new ValidationError(args.Message, ValidationError.Severity.Error));
+            ValidationError error = ErrorFactory.Create(args.Message);
+            ValidationErrors.Add(error);
         }
 
         protected abstract void SetSchemas();
